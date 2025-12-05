@@ -32,7 +32,7 @@ export function App() {
     console.log('Telegram User Data:', tgUser);
 
     // ✅ CRITICAL: REPLACE THIS URL WITH YOUR REAL FUNCTION URL FROM SUPABASE
-    const functionUrl = 'https://YOUR-PROJECT-ID.supabase.co/functions/v1/telegram-auth';
+    const functionUrl = 'https://qtiynccgkapxqgztxira.supabase.co/functions/v1/telegram-auth';
 
     try {
       const response = await fetch(functionUrl, {
