@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { LoginAnimation } from './login/LoginAnimation';
 import { ListingsPage } from './ListingsPage';
 import { ListingDetail } from './ListingDetail';
 import { CreateListingForm } from './CreateListingForm'; // Add this import
@@ -8,6 +9,7 @@ export function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<LoginAnimation />} />
         <Route path="/" element={<ListingsPage />} />
         <Route path="/listing/:listingId" element={<ListingDetail />} />
         <Route path="/create" element={<CreateListingForm />} /> {/* Add this route */}
