@@ -164,7 +164,9 @@ export function ListingsPage() {
       )}
 
       {/* =========== ADD YOUR NEW BUTTON RIGHT HERE =========== */}
-      <div style={{ marginTop: '32px' }}>
+      <div style={{ marginTop: '32px',
+  display: 'flex',
+  justifyContent: 'center' }}>
         <StartButton 
           onClick={() => {
             console.log('Start button clicked!');

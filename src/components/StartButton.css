@@ -1,7 +1,13 @@
+/* ========== CONVERTED FROM YOUR FIGMA DESIGN ========== */
+
+
+/* This uses Telegram's native theme variables instead of iOS variables */
+
 .button-ios {
     all: unset;
     align-items: center;
-    background-color: var(--colors-native-button-color);
+    /* CHANGED: Use Telegram's theme variable instead of iOS variable */
+    background-color: var(--tg-theme-button-color, #3390ec);
     border-radius: 12px;
     box-sizing: border-box;
     display: flex;
@@ -11,22 +17,42 @@
     overflow: hidden;
     padding: 15px 12px;
     position: relative;
-    width: 378px;
+    /* CHANGED: Made responsive instead of fixed 378px */
+    width: 100%;
+    max-width: 378px;
+    /* Keeps your design's maximum width */
+    margin: 0 auto;
+    /* Centers the button */
 }
 
 .button-ios .label {
     align-items: center;
-    color: var(--colors-native-button-text-color);
+    /* CHANGED: Use Telegram's theme variable instead of iOS variable */
+    color: var(--tg-theme-button-text-color, #ffffff);
     display: flex;
-    font-family: var(--san-francisco-text-semibold-font-family);
-    font-size: var(--san-francisco-text-semibold-font-size);
-    font-style: var(--san-francisco-text-semibold-font-style);
-    font-weight: var(--san-francisco-text-semibold-font-weight);
+    /* CHANGED: Use Telegram's standard font stack for consistency */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 600;
+    /* Semibold weight */
     justify-content: center;
-    letter-spacing: var(--san-francisco-text-semibold-letter-spacing);
-    line-height: var(--san-francisco-text-semibold-line-height);
+    letter-spacing: -0.41px;
+    line-height: 22px;
     position: relative;
     text-align: center;
     white-space: nowrap;
     width: fit-content;
+}
+
+
+/* Optional: Hover and disabled states */
+
+.button-ios:hover:not(:disabled) {
+    opacity: 0.9;
+}
+
+.button-ios:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }

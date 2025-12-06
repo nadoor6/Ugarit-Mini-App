@@ -1,15 +1,5 @@
 import { hapticFeedback } from '@tma.js/sdk';
 import './StartButton.css'; // We'll create this stylesheet next
-import React from "react";
-
-export const ButtonIos = (): JSX.Element => {
-    return (
-        <button className="button-ios">
-            <div className="label">Start</div>
-        </button>
-    );
-};
-
 
 interface StartButtonProps {
   onClick?: () => void;
@@ -37,7 +27,7 @@ export function StartButton({ onClick, disabled, children = 'Start' }: StartButt
       disabled={disabled}
       type="button"
     >
-      {children}
+      <div className="label">{children}</div>
     </button>
   );
 }
