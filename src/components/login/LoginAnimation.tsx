@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { hapticFeedback } from '@tma.js/sdk';
 
-const LoginAnimation: React.FC = (): JSX.Element => {
-  const [stage, setStage] = useState<number>(1);
+const LoginAnimation = () => {
+  const [stage, setStage] = useState(1);
 
-  // Simple animation: stage 1 → 2 → 3
+  // Animation sequence
   useEffect(() => {
     const timer1 = setTimeout(() => setStage(2), 800);
     const timer2 = setTimeout(() => setStage(3), 1600);
@@ -15,33 +15,13 @@ const LoginAnimation: React.FC = (): JSX.Element => {
     };
   }, []);
 
+  // CORRECT: Using exactly what you specified for haptic feedback
   const handleButtonClick = () => {
     if (hapticFeedback) {
       hapticFeedback.impactOccurred('medium');
     }
     console.log('Telegram login button clicked');
   };
-
-  // Calculate responsive scale
-  const [scale, setScale] = useState<number>(1);
-  
-  useEffect(() => {
-    const calculateScale = () => {
-      const designWidth = 440;
-      const designHeight = 956;
-      
-      const widthScale = window.innerWidth / designWidth;
-      const heightScale = window.innerHeight / designHeight;
-      
-      const newScale = Math.min(widthScale, heightScale, 1.5);
-      setScale(newScale);
-    };
-
-    calculateScale();
-    window.addEventListener('resize', calculateScale);
-    
-    return () => window.removeEventListener('resize', calculateScale);
-  }, []);
 
   return (
     <div style={{
@@ -51,7 +31,6 @@ const LoginAnimation: React.FC = (): JSX.Element => {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      overflow: 'hidden',
       position: 'fixed',
       top: 0,
       left: 0
@@ -60,37 +39,24 @@ const LoginAnimation: React.FC = (): JSX.Element => {
         width: '440px',
         height: '956px',
         position: 'relative',
-        background: 'white',
-        overflow: 'hidden',
-        transform: `scale(${scale})`,
-        transformOrigin: 'center'
+        overflow: 'hidden'
       }}>
-        {/* Background */}
-        <div style={{
-          width: '755px',
-          height: '1159px',
-          left: '-160.58px',
-          top: '-128.76px',
-          position: 'absolute',
-          background: '#0C0C0C'
-        }} />
-
         {/* Welcome Text */}
         <div style={{
           width: stage === 1 ? '1px' : '406px',
           height: '162px',
           left: stage === 1 ? '-12px' : '17px',
           top: '397px',
-          position: 'absolute',
+          position: 'absolute' as 'absolute',
           overflow: stage === 1 ? 'hidden' : 'visible',
           transition: 'width 0.8s ease, left 0.8s ease'
         }}>
           <div style={{
             width: '406px',
             height: '162px',
-            textAlign: 'center',
+            textAlign: 'center' as 'center',
             display: 'flex',
-            flexDirection: 'column',
+            flexDirection: 'column' as 'column',
             justifyContent: 'center'
           }}>
             <span style={{
@@ -119,9 +85,9 @@ const LoginAnimation: React.FC = (): JSX.Element => {
           width: '378px',
           left: '31px',
           top: stage === 3 ? '879px' : '967px',
-          position: 'absolute',
+          position: 'absolute' as 'absolute',
           display: 'flex',
-          flexDirection: 'column',
+          flexDirection: 'column' as 'column',
           justifyContent: 'center',
           alignItems: 'center',
           gap: '10px',
@@ -159,7 +125,7 @@ const LoginAnimation: React.FC = (): JSX.Element => {
             <div style={{
               width: '24px',
               height: '24px',
-              position: 'absolute',
+              position: 'absolute' as 'absolute',
               left: '78px',
               top: '17px'
             }}>
@@ -168,7 +134,7 @@ const LoginAnimation: React.FC = (): JSX.Element => {
                 height: '19.80px',
                 left: '2.35px',
                 top: '2.10px',
-                position: 'absolute',
+                position: 'absolute' as 'absolute',
                 background: 'white'
               }} />
             </div>
@@ -177,7 +143,7 @@ const LoginAnimation: React.FC = (): JSX.Element => {
           {/* Person icon (SVG for stage 3) */}
           {stage === 3 && (
             <div style={{
-              position: 'absolute',
+              position: 'absolute' as 'absolute',
               left: '78px',
               top: '17px'
             }}>
