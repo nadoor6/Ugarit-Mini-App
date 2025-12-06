@@ -1,0 +1,32 @@
+.button-ios {
+    all: unset;
+    align-items: center;
+    background-color: var(--colors-native-button-color);
+    border-radius: 12px;
+    box-sizing: border-box;
+    display: flex;
+    gap: 10px;
+    height: 58px;
+    justify-content: center;
+    overflow: hidden;
+    padding: 15px 12px;
+    position: relative;
+    width: 378px;
+}
+
+.button-ios .label {
+    align-items: center;
+    color: var(--colors-native-button-text-color);
+    display: flex;
+    font-family: var(--san-francisco-text-semibold-font-family);
+    font-size: var(--san-francisco-text-semibold-font-size);
+    font-style: var(--san-francisco-text-semibold-font-style);
+    font-weight: var(--san-francisco-text-semibold-font-weight);
+    justify-content: center;
+    letter-spacing: var(--san-francisco-text-semibold-letter-spacing);
+    line-height: var(--san-francisco-text-semibold-line-height);
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+    width: fit-content;
+}

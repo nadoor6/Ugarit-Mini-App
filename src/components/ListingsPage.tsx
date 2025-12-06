@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // ADD THIS IMPORT
+import { useNavigate } from 'react-router-dom';
 import { Card, Text, Title, Image, Button, Spinner } from '@telegram-apps/telegram-ui';
 import { hapticFeedback } from '@tma.js/sdk';
 import { supabase } from '../lib/supabase';
+import { StartButton } from './StartButton'; // NEW IMPORT
 
 interface Listing {
   id: string;
@@ -21,7 +22,7 @@ export function ListingsPage() {
   const [listings, setListings] = useState<Listing[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const navigate = useNavigate(); // Now properly initialized
+  const navigate = useNavigate();
 
   const fetchListings = async () => {
     try {
@@ -93,16 +94,10 @@ export function ListingsPage() {
     );
   }
 
+  // THE MAIN RETURN BLOCK: Your button is added right before the final closing `</div>`
   return (
     <div style={{ padding: '16px' }}>
       <Title level="2" style={{ marginBottom: '20px' }}>
-        <Button 
-  onClick={() => navigate('/create')}
-  size="m"
-  style={{ marginBottom: '20px' }}
->
-  + Create Listing
-</Button>
         Marketplace
       </Title>
 
@@ -120,7 +115,7 @@ export function ListingsPage() {
             }}
             onClick={() => {
               triggerHaptic('light');
-              navigate(`/listing/${listing.id}`); // FIXED: Using the correct 'listing' variable
+              navigate(`/listing/${listing.id}`);
             }}
           >
             <div style={{ display: 'flex', gap: '16px' }}>
@@ -167,6 +162,19 @@ export function ListingsPage() {
           </Card>
         ))
       )}
-    </div>
+
+      {/* =========== ADD YOUR NEW BUTTON RIGHT HERE =========== */}
+      <div style={{ marginTop: '32px' }}>
+        <StartButton 
+          onClick={() => {
+            console.log('Start button clicked!');
+            // You can add any action here, for example:
+            // navigate('/create'); // To go to the create listing page
+          }} 
+        />
+      </div>
+      {/* =========== END OF NEW BUTTON =========== */}
+
+    </div> // This is the closing tag for the main container div
   );
 }
